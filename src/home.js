@@ -7,9 +7,11 @@ import storyImg from "../src/img/story-image.png";
 const content = document.getElementById('content')
 
 export function uploadPage(){
-    createWelcomeSection();
-    createInfoSection();
-    createStorySection();
+    if(!content.firstChild){
+        createWelcomeSection();
+        createInfoSection();
+        createStorySection();
+    }
 }
 
 function createWelcomeSection(){
