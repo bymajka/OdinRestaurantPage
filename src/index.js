@@ -1,6 +1,7 @@
 import "./styles.css";
 import "./home.css";
 import "./about.css";
+import "./menu.css";
 
 import {uploadPage as uploadHomePage} from "./home";
 import {uploadPage as uploadAboutPage} from "./about";
@@ -21,7 +22,7 @@ homeTabButton.addEventListener('click', () => {
   uploadHomePage();
 });
 menuTabButton.addEventListener('click', () => {
-  // cleanPage();
+  cleanPage();
   uploadMenuPage();
 });
 aboutTabButton.addEventListener('click', () => {
