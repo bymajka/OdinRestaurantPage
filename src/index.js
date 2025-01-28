@@ -1,44 +1,36 @@
 import "./styles.css";
 
-// import "./home.css";
-// import "./about.css";
-// import {uploadPage as uploadHomePage} from "./home";
-// import {uploadPage as uploadAboutPage} from "./about";
-// import {uploadPage as uploadMenuPage} from "./menu";
 const content = document.getElementById('content');
 
-const homeTabButton = document.querySelector('.home-button');
-const menuTabButton = document.querySelector('.menu-button');
-const aboutTabButton = document.querySelector('.about-button');
+// const homeTabButton = document.querySelector('.home-button');
+// const menuTabButton = document.querySelector('.menu-button');
+// const aboutTabButton = document.querySelector('.about-button');
+
+const tabs = [
+  {button: '.home-button', module: 'home', css: 'home.css'},
+  {button: '.menu-button', module: 'menu', css: 'menu.css'},
+  {button: '.about-button', module: 'about', css: 'about.css'},
+];
+
+tabs.forEach(({button, module, css}) => {
+  document.querySelector(button).addEventListener('click', async () => {
+    cleanPage();
+    const {uploadPage} = await import(`./${module}`);
+    await import(`./${css}`);
+    uploadPage();
+  });
+})
 
 window.addEventListener('load', async () => {
   const { uploadPage: uploadHomePage } = await import('./home');
-  import('./home.css');
+  await import('./home.css');
   uploadHomePage();
+  content.style.visibility = 'visible';
 })
 
-homeTabButton.addEventListener('click', async () => {
-  cleanPage();
-  const { uploadPage: uploadHomePage } = await import('./home');
-  import('./home.css');
-  uploadHomePage();
-});
-
-menuTabButton.addEventListener('click', async () => {
-  cleanPage();
-  const { uploadPage: uploadMenuPage } = await import('./menu');
-  import('./menu.css');
-  uploadMenuPage();
-});
-aboutTabButton.addEventListener('click', async () => {
-  cleanPage();
-  const { uploadPage: uploadAboutPage } = await import('./about');
-  import('./about.css'); // Load styles dynamically
-  uploadAboutPage();
-})
 const cleanPage = () => {
-    while (content.firstChild) {
-      content.removeChild(content.firstChild);
-    }
+  while (content.firstChild) {
+    content.firstChild.remove();
+  }
 };
 

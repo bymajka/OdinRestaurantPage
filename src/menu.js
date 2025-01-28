@@ -4,6 +4,12 @@ import secondDishImg from "../src/img/second-dish.png";
 import thirdDishImg from "../src/img/third-dish.png";
 import sectionSeparatorImg from "../src/img/menu-section-separator.png"
 
+const dishData = [
+    {img: firstDishImg, rating: "5.0", price: "$13", name: "Dish 1" },
+    {img: secondDishImg, rating: "4.8", price: "$15", name: "Dish 2" },
+    {img: thirdDishImg, rating: "4.5", price: "$14", name: "Dish 3" },
+];
+
 const content = document.getElementById('content');
 
 export function uploadPage() {
@@ -16,19 +22,23 @@ export function uploadPage() {
 function createMenuSection(){
     const menuSection = document.createElement('section');
     menuSection.classList.add('menu-section');
+
     const subtitle = document.createElement('h3');
     subtitle.classList.add('subtitle');
     subtitle.innerHTML = "MENU";
+
     const h2Element = document.createElement('h2');
     h2Element.innerHTML = "Popular Dishes";
+    
     const pElement = document.createElement('p');
     pElement.innerHTML = "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content making.";
 
     const popularDishes = document.createElement('div');
     popularDishes.classList.add("popular-dishes");
-    popularDishes.appendChild(createDishCard(firstDishImg, "5.0"));
-    popularDishes.appendChild(createDishCard(secondDishImg, "5.0"));
-    popularDishes.appendChild(createDishCard(thirdDishImg, "5.0"));
+
+    dishData.forEach(dish => {
+        popularDishes.appendChild(createDishCard(dish.img, dish.rating));
+    });
 
     const button = document.createElement('button');
     button.innerHTML = "See all dishes";
@@ -47,18 +57,24 @@ function createDishCard(imgPath, ratingScore){
     const img = document.createElement('img');
 
     img.src = imgPath;
+    img.loading = 'lazy';
 
     const dishInfo = document.createElement('div');
     dishInfo.classList.add("dish-info");
+
     const h4Element = document.createElement('h4');
     h4Element.innerHTML = "Lorem Epsum";
+
     const price = document.createElement('p');
     price.innerHTML = "$13";
     price.classList.add("price");
+
     const rating = document.createElement('div');
     rating.classList.add("rating");
+
     const button = document.createElement('button');
     button.innerHTML = "Order Now";
+
     const ratingNumber = document.createElement('p');
     ratingNumber.innerHTML = ratingScore;
     rating.appendChild(ratingNumber);
@@ -67,6 +83,7 @@ function createDishCard(imgPath, ratingScore){
         star.src = starImg;
         rating.appendChild(star);
     }
+
     dishInfo.appendChild(h4Element);
     dishInfo.appendChild(price);
     dishInfo.appendChild(rating);

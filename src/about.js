@@ -9,13 +9,29 @@ import skilledChefsImage from "../src/img/skilled-chefs.svg";
 import drinksJuicesImage from "../src/img/drinks-juices.svg";
 import veganCuisineImage from "../src/img/vegan-cuisine.svg";
 
+import {createStorySection} from "./storySection";
+
 const content = document.getElementById('content');
+
+const advantages = [
+    {img: freshProductImage, name: "Fresh Product"},
+    {img: skilledChefsImage, name: "Skilled Chefs"},
+    {img: drinksJuicesImage, name: "Drinks & Juices"},
+    {img: veganCuisineImage, name: "Vegan Cuisine"},
+];
+
+const chefs = [
+    {img: firstChef, name: "Avroko", vacation: "Master Chef"},
+    {img: secondChef, name: "Evan Mattew", vacation: "Master Chef"},
+    {img: thirdChef, name: "Diane	Clarkson", vacation: "Master Chef"},
+    {img: fourthChef, name: "Dan Rafalin", vacation: "Assistant Chef "},
+]
 
 export function uploadPage(){
     if(!content.firstChild){
         createAboutSection();
         createAdvantageSection();
-        createStorySection();
+        createStorySection(content);
         createTeamSection();
     }
 }
@@ -59,15 +75,10 @@ function createAdvantageSection(){
     const advantageSection = document.createElement('section');
     advantageSection.classList.add("advantage-section");
 
-    const freshProduct = createAdvantage(freshProductImage, "Fresh Product");
-    const chefs = createAdvantage(skilledChefsImage, "Skilled Chefs");
-    const drinks = createAdvantage(drinksJuicesImage, "Drinks & Juices");
-    const vegan = createAdvantage(veganCuisineImage, "Vegan Cuisine");
+    advantages.forEach(advantage => {
+        advantageSection.appendChild(createAdvantage(advantage.img, advantage.name));
+    });
 
-    advantageSection.appendChild(freshProduct);
-    advantageSection.appendChild(chefs);
-    advantageSection.appendChild(drinks);
-    advantageSection.appendChild(vegan);
     content.appendChild(advantageSection);
 }
 
@@ -98,51 +109,6 @@ function createAdvantage(imgPath, headerText) {
     return advantageElement;
 }
 
-function createStorySection() {
-    const storySection = document.createElement('section');
-    storySection.classList.add("story-section");
-
-    const storySectionImg = document.createElement('img');
-    storySectionImg.src = storyImg;
-
-    const storyText = document.createElement('div');
-    storyText.classList.add("story-text");
-    const h2StoryElement = document.createElement('h2');
-    h2StoryElement.innerHTML = "The Story";
-    const pStoryElement = document.createElement('p');
-    pStoryElement.innerHTML = "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content gfshere', makinlook like readable English. Many desktop publishing packages."
-
-    storyText.appendChild(h2StoryElement);
-    storyText.appendChild(pStoryElement);
-
-    const year1996Text = document.createElement('div');
-    year1996Text.classList.add("year-1996");
-    const h2Year1996Element = document.createElement('h2');
-    h2Year1996Element.innerHTML = "1996"
-    const pYear1996Element = document.createElement('p');
-    pYear1996Element.innerHTML = "Lorem Ipsum is that it has a more-or-less normal distribution";
-
-    year1996Text.appendChild(h2Year1996Element);
-    year1996Text.appendChild(pYear1996Element);
-
-    const year2021Text = document.createElement('div');
-    year2021Text.classList.add("year-2021");
-    const h2Year2021Element = document.createElement('h2');
-    h2Year2021Element.innerHTML = "2021";
-    const pYear2021Element = document.createElement('p');
-    pYear2021Element.innerHTML = "Lorem Ipsum is that it has a more-or-less normal Content content";
-
-    year2021Text.appendChild(h2Year2021Element);
-    year2021Text.appendChild(pYear2021Element);
-
-    storySection.appendChild(storySectionImg);
-    storySection.appendChild(storyText);
-    storySection.appendChild(year1996Text);
-    storySection.appendChild(year2021Text);
-
-    content.appendChild(storySection);
-}
-
 function createTeamSection() {
     const teamSection = document.createElement('section');
     teamSection.classList.add("team-section");
@@ -157,15 +123,14 @@ function createTeamSection() {
     const chefsList = document.createElement('div');
     chefsList.classList.add("chefs-list");
 
-    chefsList.appendChild(createChefElement(firstChef, "Avroko", "Master Chef"));
-    chefsList.appendChild(createChefElement(secondChef, "Evan Mattew", "Master Chef"));
-    chefsList.appendChild(createChefElement(thirdChef, "Diane	Clarkson", "Master Chef"));
-    chefsList.appendChild(createChefElement(fourthChef, "Dan Rafalin", "Assistant Chef "));
+    chefs.forEach(chef => {
+        chefsList.appendChild(createChefElement(chef.img, chef.name, chef.vacation));
+    });
 
     teamSection.appendChild(subtitle);
     teamSection.appendChild(h2Element);
     teamSection.appendChild(chefsList);
-    
+
     content.appendChild(teamSection);
 }
 
