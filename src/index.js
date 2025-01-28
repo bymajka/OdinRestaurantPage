@@ -1,7 +1,7 @@
 import "./styles.css";
+
 // import "./home.css";
 // import "./about.css";
-
 // import {uploadPage as uploadHomePage} from "./home";
 // import {uploadPage as uploadAboutPage} from "./about";
 // import {uploadPage as uploadMenuPage} from "./menu";
@@ -23,6 +23,7 @@ homeTabButton.addEventListener('click', async () => {
   import('./home.css');
   uploadHomePage();
 });
+
 menuTabButton.addEventListener('click', async () => {
   cleanPage();
   const { uploadPage: uploadMenuPage } = await import('./menu');
