@@ -1,0 +1,171 @@
+.about-us-section {
+    margin: 12.5em 10em 11em 10em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.about-us-description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    width: 38em;
+}
+
+.subtitle {
+    width: fit-content;
+    border-top: 1px solid #E1B168;
+    border-bottom: 1px solid #E1B168;
+
+    display: inline;
+
+    font-family: var(--navigation-font);
+    letter-spacing: 0.27em;
+    line-height: 0.77em;
+
+    padding: 5px 0;
+    /* margin-bottom: 19px; */
+}
+
+.about-us-section h2 {
+    font-size: 2.2em;
+    font-family: var(--default-font);
+    font-weight: bold;
+
+    line-height: 77%;
+    /* padding-bottom: 0.5em; */
+}
+
+.about-us-section p {
+    font-family: var(--default-font);
+    font-size: 1.2em;
+    color: var(--light-font-color);
+
+    line-height: 126%;
+}
+
+.about-us-description button {
+    background-color: var(--accent-color);
+    width: 13.5em;
+    height: 4.25em;
+
+    border: 2px solid var(--highlight-color);
+    border-radius: 5px;
+
+    font-family: var(--default-font);
+    font-weight: bold;
+    font-size: 1.2em;
+
+    line-height: 126%;
+    cursor: pointer;
+}
+
+.advantage-section {
+    margin: 0 4.25em;
+    padding: 0 1.2em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.advantage {
+    width: 241px;
+    height: 269px;
+
+    background: var(--background-color);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.advantage:hover img {
+    transform: rotate(10deg);
+}
+
+.advantage-header {
+    font-family: var(--small-headers-font);
+    font-weight: bold;
+    font-size: 1.5em;
+
+    line-height: 77%;
+    padding: 0.5em 0 1em 0;
+}
+
+.advantage-text {
+    font-family: var(--navigation-font);
+    font-size: 0.9em;
+
+    width: fit-content;
+    line-height: 150%;
+    text-align: center;
+}
+
+.advantage a {
+    font-size: 0.9em;
+    font-family: var(--navigation-font);
+
+    text-decoration: none;
+    color: var(--accent-color);
+    padding: 1em 0 0;
+}
+
+.team-section {
+    margin: 0 11em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.team-section h2 {
+    font-size: 2.2em;
+    font-family: var(--default-font);
+    font-weight: bold;
+
+    line-height: 77%;
+    padding: 0.4em 0 2em;
+}
+
+.chefs-list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5.6em;
+
+    width: 100%;
+}
+
+.chef-element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chef-element img {
+    transition: 1s;
+}
+
+.chef-element img:hover {
+    transform: scale(1.2);
+    transition: 1s;
+}
+
+.chef-name {
+    font-family: var(--default-font);
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 77%;
+
+    padding: 1.1em 0 0.4em;
+}
+
+.chef-class {
+    font-family: var(--default-font);
+    font-size: 0.9em;
+    line-height: 126%;
+
+    color: var(--light-font-color);
+}
